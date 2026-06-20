@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@100..900&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   DOLPHIN HAJ — BRUTALIST DEVELOPER DESIGN SYSTEM
+   Automated Umrah Booking Platform
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Core Palette ── */
+  --color-void: #000000;
+  --color-surface: #09090B;
+  --color-surface2: #0A0A0C;
+  --color-surface3: #111113;
+  --color-border: #27272A;
+  --color-border2: #3F3F46;
+  --color-neon: #00FF66;
+  --color-neon-dim: #00CC52;
+  --color-amber: #F59E0B;
+  --color-amber-dim: #D97706;
+  --color-slate: #71717A;
+  --color-muted: #52525B;
+
+  /* ── Font Families ── */
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* ── Shadows ── */
+  --shadow-neon-sm: 0 0 8px rgba(0, 255, 102, 0.3);
+  --shadow-neon-md: 0 0 16px rgba(0, 255, 102, 0.4), 0 0 32px rgba(0, 255, 102, 0.15);
+  --shadow-neon-lg: 0 0 24px rgba(0, 255, 102, 0.5), 0 0 48px rgba(0, 255, 102, 0.2);
+  --shadow-amber-sm: 0 0 8px rgba(245, 158, 11, 0.3);
+  --shadow-amber-md: 0 0 16px rgba(245, 158, 11, 0.4);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  /* ── Animations ── */
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-neon: pulse-neon 2s ease-in-out infinite;
+  --animate-type-cursor: type-cursor 1s step-end infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-scan-line: scan-line 3s linear infinite;
+  --animate-slide-up: slide-up 0.4s ease-out;
+  --animate-fade-in: fade-in 0.3s ease-out;
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes pulse-neon {
+    0%, 100% { box-shadow: 0 0 8px rgba(0, 255, 102, 0.3); }
+    50% { box-shadow: 0 0 24px rgba(0, 255, 102, 0.7), 0 0 48px rgba(0, 255, 102, 0.3); }
+  }
+  @keyframes type-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scan-line {
+    0% { top: 0%; }
+    100% { top: 100%; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #000000;
+  color: #E4E4E7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CSS GRID TEXTURE OVERLAY
+   ═══════════════════════════════════════════════════════════ */
+
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #09090B;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF66;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTION & FOCUS
+   ═══════════════════════════════════════════════════════════ */
+
+::selection {
+  background: rgba(0, 255, 102, 0.2);
+  color: #00FF66;
+}
+
+:focus-visible {
+  outline: 1px solid #00FF66;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLASSMORPHISM
+   ═══════════════════════════════════════════════════════════ */
+
+.glass {
+  background: rgba(9, 9, 11, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-light {
+  background: rgba(9, 9, 11, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SKELETON SHIMMER
+   ═══════════════════════════════════════════════════════════ */
+
+.skeleton {
+  background: linear-gradient(90deg, #18181B 0%, #27272A 50%, #18181B 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEON & AMBER GLOW
+   ═══════════════════════════════════════════════════════════ */
+
+.neon-text {
+  color: #00FF66;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+}
+
+.neon-border {
+  border-color: #00FF66 !important;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.3), inset 0 0 12px rgba(0, 255, 102, 0.05);
+}
+
+.amber-text {
+  color: #F59E0B;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TERMINAL CURSOR
+   ═══════════════════════════════════════════════════════════ */
+
+.terminal-cursor::after {
+  content: '█';
+  color: #00FF66;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAGNETIC BUTTON
+   ═══════════════════════════════════════════════════════════ */
+
+.magnetic-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MARQUEE
+   ═══════════════════════════════════════════════════════════ */
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TERMINAL SCROLL
+   ═══════════════════════════════════════════════════════════ */
+
+.terminal-scroll::-webkit-scrollbar {
+  width: 2px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: #27272A;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROGRESS RING
+   ═══════════════════════════════════════════════════════════ */
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DATA TABLE
+   ═══════════════════════════════════════════════════════════ */
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #27272A;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+.data-table tr:hover td {
+  background: rgba(39, 39, 42, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCANLINES
+   ═══════════════════════════════════════════════════════════ */
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
