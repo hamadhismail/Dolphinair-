@@ -14,7 +14,7 @@ import {
   HandHelping,
   Shield,
   Eye,
-  Bullseye,
+  Target,
   History,
   ShieldCheck,
   GraduationCap,
@@ -152,7 +152,7 @@ export function AboutContent() {
             <ScrollReveal variants={fadeLeft}>
               <div className="bg-white/8 backdrop-blur-sm border border-white/12 rounded-2xl p-8 text-center hover:bg-white/12 hover:-translate-y-1 transition-all">
                 <div className="w-20 h-20 rounded-full bg-emerald/20 flex items-center justify-center mx-auto mb-5">
-                  <Bullseye className="w-9 h-9 text-emerald" />
+                  <Target className="w-9 h-9 text-emerald" />
                 </div>
                 <h3 className="text-xl font-heading font-bold text-white mb-3">Our Mission</h3>
                 <p className="text-white/60 leading-relaxed">
